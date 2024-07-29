@@ -21,8 +21,8 @@ const SmallScreensNavbar = () => {
         }`}
       >
         <NavComponent
-          navClass="flex flex-col text-center justify-around h-2/5 mx-auto mt-12 w-4/5"
-          linkClassName="text-gray-100 cursor-pointer py-1"
+          navClass="flex flex-col text-left justify-around space-y-2 h-2/5 mx-auto mt-12 w-4/5"
+          linkClassName="text-gray-100 cursor-pointer py-1 space-y-2"
           onClick={() => setTranslate(true)} // set translate to true to hide the sidebar list
         />
       </div>

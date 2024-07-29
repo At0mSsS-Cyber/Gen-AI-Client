@@ -1,17 +1,20 @@
 import React from 'react';
-
+import { Button } from '@mui/material';
 interface GuestButtonProps {
   onClick: () => void;
 }
 
 const GuestButton: React.FC<GuestButtonProps> = ({ onClick }) => {
   return (
-    <button
+    <Button
       onClick={onClick}
-      className="w-full p-2 text-white bg-gray-500 rounded hover:bg-gray-600"
+      variant='text'
+      type="button"
+      color="secondary"
+      className="w-full p-2 rounded"
     >
       Continue as Guest
-    </button>
+    </Button>
   );
 };
 

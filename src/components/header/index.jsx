@@ -9,8 +9,8 @@ const Header = () => {
   const [width, height] = useWindowWidthAndHeight();
 
   return (
-    <header className="fixed top-0 w-full h-16 bg-gray-300 flex items-end justify-center shadow-md">
-      <div className="w-11/12 flex items-center justify-between">
+    <header className=" fixed top-0 w-full h-16 bg-customBlue flex items-end justify-center shadow-md">
+      <div className="w-11/12 flex h-16 items-center justify-between">
         <Link
           to="/"
           className="text-lg cursor-pointer text-gray-100 hover:text-white"
@@ -21,12 +21,12 @@ const Header = () => {
                    else use <SmallScreensNavbar/>*/}
         {width > 1000 ? (
           <Navbar
-            navClass="flex justify-around w-7/12 font-bold"
+            navClass="flex justify-around items-center space-x-10 font-bold"
             linkClassName="text-white cursor-pointer"
           />
         ) : (
           <SmallScreensNavbar
-            navClass="flex flex-col text-center justify-around h-2/5 mx-auto mt-12 w-4/5"
+            navClass="flex flex-col text-center justify-around h-2/5 space-y-5 mx-auto mt-12 w-4/5"
             linkClassName="text-gray-100 cursor-pointer py-1"
           />
         )}

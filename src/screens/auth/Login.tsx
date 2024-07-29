@@ -11,6 +11,7 @@ import { RootState } from "../../store";
 const Login: React.FC = () => {
   const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
+  const [isError, setIsError] = React.useState<boolean>(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(
@@ -24,10 +25,17 @@ const Login: React.FC = () => {
   }, [isAuthenticated, navigate]);
 
   const handleLogin = async () => {
-    const response = await loginApi(username, password);
-    if (response.username) {
-      dispatch(loginSuccess());
-      navigate("/");
+    try {
+      const response = await loginApi(username, password);
+      if (response.username) {
+        dispatch(loginSuccess());
+        navigate("/");
+      } else {
+        console.log(response);
+      }
+    } catch (err) {
+      setIsError(true);
+      console.error(err);
     }
   };
 
@@ -37,15 +45,25 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center space-y-2 min-h-screen bg-customBrown">
       <LoginForm
         username={username}
         password={password}
-        onUsernameChange={(e) => setUsername(e.target.value)}
-        onPasswordChange={(e) => setPassword(e.target.value)}
+        isError={isError}
+        onUsernameChange={(e) => (
+          setUsername(e.target.value), setIsError(false)
+        )}
+        onPasswordChange={(e) => (
+          setPassword(e.target.value), setIsError(false)
+        )}
       />
-      <LoginButton onClick={handleLogin} />
-      <GuestButton onClick={handleGuestLogin} />
+      <div className="pt-4 space-y-2">
+        <LoginButton
+          onClick={handleLogin}
+          isDisabled={!username || !password}
+        />
+        <GuestButton onClick={handleGuestLogin} />
+      </div>
     </div>
   );
 };

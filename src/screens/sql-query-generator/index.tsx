@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import DbDetails from "./DefaultDBDetails";
+import { sqlQuery } from "../../services/sqlAPI";
+import { TextField, Button, CircularProgress } from "@mui/material";
 
 const QuestionScreen: React.FC = () => {
-  const [question, setQuestion] = useState<string>('');
+  const [question, setQuestion] = useState<string>("");
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,10 +19,10 @@ const QuestionScreen: React.FC = () => {
     setError(null);
 
     try {
-      const result = await axios.post('http://127.0.0.1:8000/sql/query/', { question });
-      setResponse(result?.data?.answer?.result);
+      const data = await sqlQuery(question);
+      setResponse(data?.answer?.result);
     } catch (err: any) {
-      setError('Failed to fetch response. Please try again.');
+      setError("Failed to fetch response. Please try again.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -28,36 +30,42 @@ const QuestionScreen: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Ask a Question</h1>
-      <div style={{ marginBottom: '20px' }}>
-        <input
-          type="text"
+    <div className=" w-full flex flex-col h-screen p-10 bg-gray-100 flex-grow">
+      <h1 className="text-2xl font-bold mb-5">Ask a Question</h1>
+      <div className="mb-5 w-1/2">
+        <TextField
+          label="Enter your question"
+          variant="outlined"
+          fullWidth
           value={question}
           onChange={handleQuestionChange}
-          placeholder="Enter your question"
-          style={{ width: '100%', padding: '10px', fontSize: '16px' }}
+          className="mb-5"
         />
       </div>
-      <button
+      <Button
+        variant="contained"
+        color="primary"
         onClick={handleSubmit}
-        disabled={loading}
-        style={{ padding: '10px 20px', fontSize: '16px', cursor: loading ? 'not-allowed' : 'pointer' }}
+        disabled={loading || !question}
+        className="mb-5 w-52"
       >
-        {loading ? 'Loading...' : 'Submit'}
-      </button>
+        {loading ? <CircularProgress size={24} /> : "Ask"}
+      </Button>
       {response && (
-        <div style={{ marginTop: '20px', fontSize: '18px' }}>
-          <h2>Response:</h2>
+        <div className="mt-5 text-lg">
+          <h2 className="text-xl font-semibold">Response:</h2>
           <p>{response}</p>
         </div>
       )}
       {error && (
-        <div style={{ marginTop: '20px', color: 'red', fontSize: '18px' }}>
-          <h2>Error:</h2>
+        <div className="mt-5 text-lg text-red-500">
+          <h2 className="text-xl font-semibold">Error:</h2>
           <p>{error}</p>
         </div>
       )}
+      <div className="mt-5">
+        <DbDetails />
+      </div>
     </div>
   );
 };

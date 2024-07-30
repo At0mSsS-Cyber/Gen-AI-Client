@@ -36,8 +36,8 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>RockyBot: News Research Tool 📈</h1>
+    <div className="mt-5">
+      <h1 className="flex text-gray-700 font-bold justify-center">Blog Research Tool 📈</h1>
       <InputForm urls={urls} handleChange={handleChange} processUrls={handleProcessUrls} />
       <QuestionForm question={question} setQuestion={setQuestion} askQuestion={handleAskQuestion} />
       <AnswerDisplay answer={answer} sources={sources} />

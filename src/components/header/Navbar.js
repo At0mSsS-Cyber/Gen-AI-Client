@@ -19,7 +19,7 @@ const NavComponent = ({ navClass, linkClassName }) => {
     <nav className={navClass}>
       {[
         ["SQL Analyzer", "SQL-Analyze-AI"],
-        ["Article Analyzer", "blog-Analyze-AI"],
+        ["Blog Research Tool", "blog-Analyze-AI"],
       ].map(([section, path], index) => (
         <Link to={path} key={index} className={linkClassName}>
           {section}

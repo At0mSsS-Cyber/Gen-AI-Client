@@ -1,46 +1,142 @@
-# Getting Started with Create React App
+## README for Gen AI Tools Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Technologies](#technologies)
+4. [Setup Instructions](#setup-instructions)
+5. [Usage](#usage)
+6. [Screenshots](#screenshots)
+7. [Contributing](#contributing)
+8. [License](#license)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The Gen AI Tools application is a powerful suite that includes tools like an SQL Database Analyzer and a Blog Research Tool. It leverages modern technologies to provide an efficient and user-friendly experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **SQL Database Analyzer**: Query and analyze your SQL databases using natural language.
+- **Blog Research Tool**: Perform research and gather insights for blog content.
+- **Responsive Design**: Fully responsive interface using Tailwind CSS.
+- **Material UI**: Enhanced UI components for a better user experience.
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend
+- React
+- TypeScript
+- Tailwind CSS
+- Material UI
 
-### `npm run build`
+### Backend
+- Django
+- OpenAI
+- Langchain
+- PaLM 2
+- Django REST framework
+- SQLite (or other SQL databases)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v12 or later)
+- Python (v3.6 or later)
+- Django (v3 or later)
+- SQLite (or another SQL database)
 
-### `npm run eject`
+### Frontend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/At0mSsS-Cyber/Gen-AI-Client.git
+   cd Gen-AI-Client
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend Setup
 
-## Learn More
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/At0mSsS-Cyber/Gen-AI-Server.git
+   cd Gen-AI-Server
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Create a virtual environment and activate it:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run database migrations:**
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Start the development server:**
+   ```bash
+   python manage.py runserver
+   ```
+
+## Usage
+
+### Frontend
+
+Once the frontend server is running, open your browser and navigate to `http://localhost:3000`. You can use the SQL Database Analyzer to connect to your database and perform queries. The Blog Research Tool allows you to search for blog topics and gather insights.
+
+### Backend
+
+The backend server runs at `http://localhost:8000`. It provides RESTful APIs for the frontend to interact with the SQL database and other services.
+
+### Example Requests
+
+**List Tables**
+```bash
+curl -X GET http://localhost:8000/api/tables/
+```
+
+**Execute Query**
+```bash
+curl -X POST http://localhost:8000/api/query/ -d '{"query": "SELECT * FROM your_table"}' -H "Content-Type: application/json"
+```
+
+## Screenshots
+
+### SQL Database Analyzer
+![SQL Database Analyzer](./screenshots/sql_analyzer.png)
+
+### Blog Research Tool
+![Blog Research Tool](./screenshots/blog_research.png)
+
+## Contributing
+
+We welcome contributions to enhance the features and functionality of this application. Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---

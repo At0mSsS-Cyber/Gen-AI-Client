@@ -120,10 +120,10 @@ curl -X POST http://localhost:8000/api/query/ -d '{"query": "SELECT * FROM your_
 ## Screenshots
 
 ### SQL Database Analyzer
-![SQL Database Analyzer](./screenshots/sql_analyzer.png)
+![SQL Database Analyzer](./public/screenshots/sql_analyzer.png)
 
 ### Blog Research Tool
-![Blog Research Tool](./screenshots/blog_research.png)
+![Blog Research Tool](./public/screenshots/blog_research.png)
 
 ## Contributing
 

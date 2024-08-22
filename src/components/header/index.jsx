@@ -9,7 +9,7 @@ const Header = () => {
   const [width, height] = useWindowWidthAndHeight();
 
   return (
-    <header className=" fixed top-0 w-full h-16 bg-customBlue flex items-end justify-center shadow-md">
+    <header className=" fixed top-0 w-full h-16 bg-customBlue flex items-end justify-center shadow-md z-50">
       <div className="w-11/12 flex h-16 items-center justify-between">
         <Link
           to="/"
